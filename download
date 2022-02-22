@@ -1,0 +1,15 @@
+cd
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install fish
+sudo apt install bat
+sudo apt install -y unzip
+EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip"
+sudo unzip -q exa.zip bin/exa -d /usr/local
+rm -rf exa.zip
+cd .config/fish/
+curl -o config.fish "https://github.com/sfa786/myfish/blob/main/config.fish"
+source config.fish
+chsh
+/usr/bin/fish
