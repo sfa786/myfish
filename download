@@ -8,6 +8,7 @@ EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" |
 curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip"
 sudo unzip -q exa.zip bin/exa -d /usr/local
 rm -rf exa.zip
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 mkdir .config/fish/
 cd .config/fish/
 curl -o config.fish "https://raw.githubusercontent.com/sfa786/myfish/main/config.fish"
