@@ -1,14 +1,13 @@
 cd
-sudo apt-get update && sudo apt-get -y upgrade && sudo apt install -y fish && sudo apt install -y bat  && sudo apt install -y unzip $$ sudo apt install -y curl
 
+sudo apt-get update && sudo apt-get -y upgrade 
+sudo apt install -y fish bat unzip curl net-tools
 EXA_VERSION=$(curl -s "https://api.github.com/repos/ogham/exa/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
 curl -Lo exa.zip "https://github.com/ogham/exa/releases/latest/download/exa-linux-x86_64-v${EXA_VERSION}.zip"
 sudo unzip -q exa.zip bin/exa -d /usr/local
 rm -rf exa.zip
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-mkdir -p .config/fish/ && cd .config/fish/ && curl -o config.fish "https://raw.githubusercontent.com/sfa786/myfish/main/config.fish" && fish && source config.fish
-cd .config/fish/
-curl -o config.fish "https://raw.githubusercontent.com/sfa786/myfish/main/config.fish"
-source config.fish
+mkdir -p ~/.config/fish/ && cd ~/.config/fish/ && curl -o config.fish "https://raw.githubusercontent.com/sfa786/myfish/main/config.fish" && fish && source config.fish
+cd ~/.config/ && curl -o starship.toml "https://raw.githubusercontent.com/sfa786/myfish/main/starship.toml"  && cd ~/.config/fish && source config.fish
 chsh
 /usr/bin/fish
