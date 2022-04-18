@@ -4,7 +4,6 @@ set config "/home/sfa/.config/fish/config.fish"
 export PATH="$PATH:/home/sfa/.cargo/bin"
 starship init fish | source
 
-cd
 
 alias ..="cd .." 
 alias c="clear"
